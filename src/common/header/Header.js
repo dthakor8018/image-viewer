@@ -12,6 +12,7 @@ class Header extends Component {
         super();
         this.state = {
             anchorEl: null,
+            searchValue: ''
         }
 
     }
@@ -36,7 +37,7 @@ class Header extends Component {
                         <div className="searchIcon" >
                             <SearchIcon />
                         </div>
-                        <Input className="searchInput" disableUnderline={true} placeholder="Search..." />
+                        <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true} placeholder="Search..." />
                     </div>
                     <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"  >
                         <AccountCircleIcon onClick={this.menuOpenHandler} />
@@ -57,6 +58,8 @@ class Header extends Component {
 
         )
     }
+
+
 }
 
 export default Header;

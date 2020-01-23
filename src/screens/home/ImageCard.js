@@ -65,7 +65,12 @@ export default function ImageCard(props) {
         />
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {person.caption.text}
+            {person.caption.text.split('#')[0]}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {person.tags.map(((tag)=> {
+             return <Button size="small" color="primary">#{tag}</Button>
+            }))}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
