@@ -12,6 +12,8 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Grid from "@material-ui/core/Grid";
 import './ImageCard.css';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -72,7 +74,16 @@ export default function ImageCard(props) {
           </IconButton>
           <span>{person.likes.count} likes</span>
         </CardActions>
+        <div style={{margin:'1rem'}}>
+          <form className={classes.root} noValidate autoComplete="off">
+            <TextField id="standard-basic" label="Add a comment" />
+            <Button variant="contained" color="primary">
+              Add
+            </Button>
+          </form>
+        </div>
       </Card>
+
           </Grid>))}
       </Grid>
   );
