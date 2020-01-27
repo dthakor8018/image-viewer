@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import EditIcon from '@material-ui/icons/Edit';
 import './Profile.css';
 import ImageGrid from "./ImageGrid";
+import Fab from "@material-ui/core/Fab";
 
 class Profile extends Component {
   constructor() {
@@ -78,7 +79,10 @@ class Profile extends Component {
                 </Grid>
               </Grid>
                 <Typography variant="h5" component="h2">
-                  {this.state.userProfileData?this.state.userProfileData.full_name: null} <EditIcon>add_circle</EditIcon>
+                  {this.state.userProfileData?this.state.userProfileData.full_name: null}
+                  <Fab color="secondary" id="edit-profile" aria-label="edit">
+                    <EditIcon />
+                  </Fab>
                 </Typography>
 
               </Grid>
