@@ -62,7 +62,7 @@ export default function EditUserNameModal(props) {
               </FormHelperText>: null}
             </FormControl>
             <div style={{marginTop:'1rem'}}>
-            <Button variant="contained" color="primary" onClick={props.submitClickHandler}>Update</Button>
+            <Button variant="contained" color="primary" disabled={!fullname} onClick={props.submitClickHandler}>Update</Button>
             </div>
           </div>
         </Modal>
