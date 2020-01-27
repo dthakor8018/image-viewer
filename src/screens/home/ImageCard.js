@@ -46,10 +46,10 @@ function changeToDate(created_time) {
 export default function ImageCard(props) {
   const classes = useStyles();
   return (
-      <Grid container spacing={3}  direction="row"
+      <Grid container spacing={3}  direction="row" justify="center"
             alignItems="center">
       {props.data&&props.data.map((person) => (
-          <Grid  justify="center" item xs={6} key={person.id}>
+          <Grid   item xs={6} key={person.id}>
       <Card className={classes.card} variant="outlined">
         <CardHeader
             avatar={

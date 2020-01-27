@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -13,12 +13,21 @@ const useStyles = makeStyles(theme => ({
 
 export default function ImageGrid(props) {
   const classes = useStyles();
-  return (
+  const [openImageView, setOpenImageView] = useState(false);
+
+
+    const viewImage = person => {
+console.log("open image",person);
+        setOpenImageView(true);
+        console.log("openImageView",openImageView);
+    };
+
+    return (
       <Grid container spacing={1}  direction="row"
             alignItems="center">
       {props.data&&props.data.map((person) => (
-          <Grid  justify="center" item xs={4} key={person.id}>
-      <Card className={classes.card} variant="outlined">
+          <Grid  justify="center" id="image-grids" item xs={4} key={person.id}  onClick={ () => viewImage(person)} >
+      <Card className={classes.card} variant="outlined" >
         <CardMedia
             className={classes.media}
             image={person.images.standard_resolution.url}
