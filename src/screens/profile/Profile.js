@@ -8,6 +8,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import './Profile.css';
 import ImageGrid from "./ImageGrid";
 import Fab from "@material-ui/core/Fab";
+import EditUserNameModal from "./EditUserNameModal";
 
 class Profile extends Component {
   constructor() {
@@ -15,10 +16,28 @@ class Profile extends Component {
     this.state = {
       loggedIn: sessionStorage.getItem("access-token") == null ? false : true,
       userProfileData: null,
+      editUserModal: false,
       filterData: null,
       userMediaData: null,
       searchValue:'',
+      viewUpdateFullName:'',
+      fullname:''
     }
+  }
+
+   handleClose = () => {
+    this.setState({editUserModal: false});
+  };
+  handleOpen = () => {
+    this.setState({editUserModal: true});
+  };
+   updateClickHandler = (fullname) => {
+    console.log("loginClickHandler..",fullname);
+     this.setState({viewUpdateFullName: fullname});
+  }
+  submitClickHandler = () => {
+    console.log("fullname submit..",this.state.fullname);
+    this.setState({editUserModal: false, fullname: this.state.viewUpdateFullName});
   }
   componentWillMount() {
     if (this.state.loggedIn === false) {
@@ -79,8 +98,9 @@ class Profile extends Component {
                 </Grid>
               </Grid>
                 <Typography variant="h5" component="h2">
-                  {this.state.userProfileData?this.state.userProfileData.full_name: null}
-                  <Fab color="secondary" id="edit-profile" aria-label="edit">
+                  {this.state.fullname? this.state.fullname: null}
+                  {this.state.userProfileData&& !this.state.fullname?this.state.userProfileData.full_name: null}
+                  <Fab color="secondary" id="edit-profile" aria-label="edit" onClick={this.handleOpen}>
                     <EditIcon />
                   </Fab>
                 </Typography>
@@ -89,6 +109,7 @@ class Profile extends Component {
               <Grid item xs={3}/>
             </Grid>
             <ImageGrid data={this.state.userMediaData} />
+            <EditUserNameModal editUserModal={this.state.editUserModal} handleClose={this.handleClose} updateClickHandler={this.updateClickHandler} submitClickHandler={this.submitClickHandler}/>
           </Container>
         </div>
     )
