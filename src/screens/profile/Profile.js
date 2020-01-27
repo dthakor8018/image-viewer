@@ -56,10 +56,11 @@ class Profile extends Component {
         <div>
           <Header {...this.props} showSearchBarAndProfileIcon={false}  />
           <Container maxWidth="xl">
+            <div style={{height:'2rem'}}></div>
             <Grid container spacing={3} justify="left">
               <Grid item xs={3}/>
               <Grid item xs={2}>
-                {this.state.userProfileData?<Avatar alt={this.state.userProfileData.full_name} className="font-size"  fontSize="large" variant="circle" src={this.state.userProfileData.profile_picture} />: null}
+                {this.state.userProfileData?<Avatar alt={this.state.userProfileData.full_name} id="profile-image"  fontSize="large" variant="circle" src={this.state.userProfileData.profile_picture} />: null}
               </Grid>
               <Grid item xs={5}>
                 <Typography variant="h5" component="h2">
@@ -75,7 +76,7 @@ class Profile extends Component {
                 <Grid item xs={4}>
                   Follows By: {this.state.userProfileData?this.state.userProfileData.counts.followed_by: null}
                 </Grid>
-              </Grid>bio
+              </Grid>
                 <Typography variant="h5" component="h2">
                   {this.state.userProfileData?this.state.userProfileData.full_name: null} <EditIcon>add_circle</EditIcon>
                 </Typography>
