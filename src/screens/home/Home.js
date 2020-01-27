@@ -63,7 +63,7 @@ console.log("result...",result);
         if (data.caption.text.split('#')[0].indexOf(this.state.searchValue) > -1) {
           return data;
         }
-      })
+      });
       console.log("filterValue..", filterValue);
       this.setState({filterData: filterValue});
     } else {
