@@ -124,7 +124,6 @@ export default function ViewImageModal(props) {
                     color="textSecondary"
                     component="p"
                   >
-
                     {selectedImage.tags.map(tag => {
                       return (
                         <span size="small" key={tag} color="primary">
@@ -133,21 +132,25 @@ export default function ViewImageModal(props) {
                       );
                     })}
                   </Typography>
-<span>
-
-                  {comments.length > 0 && comments.map(tag => {
-                      return (
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="ui"
+                    >
+                        {comments.length > 0 &&
+                        comments.map(tag => {
+                            return (
                           <li size="small" key={tag} color="primary">
-                          {tag}
-                        </li>
-                      );
-                    })}
-</span>
+                              {tag}
+                          </li>
+                            );
+                        })}
+                    </Typography>
                   <span>
                     <IconButton aria-label="add to favorites">
                       <FavoriteIcon />
                     </IconButton>
-                    {selectedImage.likes.count} likes
+                    <span> {selectedImage.likes.count} likes</span>
                   </span>
                   <div style={{ margin: "1rem" }}>
                     <form
@@ -155,8 +158,18 @@ export default function ViewImageModal(props) {
                       noValidate
                       autoComplete="off"
                     >
-                      <TextField id="standard-basic" onChange={commentChangeHandler} value={comment} label="Add a comment" />
-                      <Button variant="contained" color="primary" onClick={updateComments} disabled={!comment}>
+                        <TextField
+                            id="standard-basic"
+                            onChange={commentChangeHandler}
+                            value={comment}
+                            label="Add a comment"
+                        />
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={updateComments}
+                            disabled={!comment}
+                        >
                         Add
                       </Button>
                     </form>
