@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -45,8 +45,18 @@ function changeToDate(created_time) {
 
 export default function ImageCard(props) {
   const classes = useStyles();
+    let {data} = props;
+    useEffect(() => {
+        data && data.map((image) => {
+            image['comments'] = ['123', '456'];
+            return image;
+        })
+
+    }, [data]);
+
+    console.log("data...", data);
   return (
-      <Grid container spacing={2} direction="row" justify="left"
+      <Grid container spacing={2} direction="row" justify="flex-start"
             alignItems="center">
       {props.data&&props.data.map((person) => (
           <Grid item xs={6} key={person.id}>
@@ -69,9 +79,23 @@ export default function ImageCard(props) {
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {person.tags.map(((tag)=> {
-             return <Button size="small" color="primary">#{tag}</Button>
+                return <Button key={tag} size="small" color="primary">#{tag}</Button>
             }))}
           </Typography>
+            <Typography
+                variant="body2"
+                color="textSecondary"
+                component="ul"
+            >
+                {person.comments && person.comments.length > 0 &&
+                person.comments.map(tag => {
+                    return (
+                        <li size="small" key={tag} color="primary">
+                            {tag}
+                        </li>
+                    );
+                })}
+            </Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
@@ -81,7 +105,7 @@ export default function ImageCard(props) {
         </CardActions>
         <div style={{margin:'1rem'}}>
           <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="standard-basic" label="Add a comment" />
+              <TextField id="add-comment" label="Add a comment"/>
             <Button variant="contained" color="primary">
               Add
             </Button>

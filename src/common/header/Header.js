@@ -62,8 +62,11 @@ class Header extends Component {
                             </div>
                             <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true} placeholder="Search..." />
                         </div> : ""}
-                    <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"  >
-                        {this.state.userProfileData?<Avatar alt={this.state.userProfileData.full_name} id="profile-icon"  fontSize="small" onClick={this.profileRedirect} ariant="circle" src={this.state.userProfileData.profile_picture} />: null}
+                    <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"
+                                onClick={this.profileRedirect}>
+                        {this.state.userProfileData ?
+                            <Avatar alt={this.state.userProfileData.full_name} id="profile-icon" fontSize="small"
+                                    ariant="circle" src={this.state.userProfileData.profile_picture}/> : null}
                     </IconButton>
                 </div>
 

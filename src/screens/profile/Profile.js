@@ -72,7 +72,7 @@ class Profile extends Component {
             <Header {...this.props} showSearchBar={false}/>
           <Container maxWidth="xl">
             <div style={{height:'2rem'}}></div>
-            <Grid container spacing={3} justify="left">
+              <Grid container spacing={3} justify="flex-start">
               <Grid item xs={3}/>
               <Grid item xs={2}>
                 {this.state.userProfileData?<Avatar alt={this.state.userProfileData.full_name} id="profile-image"  fontSize="large" variant="circle" src={this.state.userProfileData.profile_picture} />: null}
