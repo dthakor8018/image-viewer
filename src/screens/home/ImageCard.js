@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 345,
+    maxWidth: "100%",
   },
   media: {
     height: 0,
@@ -46,10 +46,10 @@ function changeToDate(created_time) {
 export default function ImageCard(props) {
   const classes = useStyles();
   return (
-      <Grid container spacing={3}  direction="row" justify="center"
+      <Grid container spacing={1}  direction="row" justify="left"
             alignItems="center">
       {props.data&&props.data.map((person) => (
-          <Grid   item xs={6} key={person.id}>
+          <Grid   item xs={4} key={person.id}>
       <Card className={classes.card} variant="outlined">
         <CardHeader
             avatar={

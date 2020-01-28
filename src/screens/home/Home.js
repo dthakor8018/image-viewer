@@ -25,6 +25,7 @@ class Home extends Component {
         .then(
             (result) => {
 console.log("result...",result);
+                this.setState({userProfileData: result.data});
 
             },
             (error) => {
@@ -37,8 +38,7 @@ console.log("result...",result);
         .then(
             (result) => {
 
-              this.setState({userProfileData: result.data, filterData: result.data});
-              console.log("result recent...",this.state.userProfileData);
+              this.setState({userMediaData: result.data, filterData: result.data});
             },
             (error) => {
               console.log("result recent error...",error);
@@ -67,7 +67,7 @@ console.log("result...",result);
       console.log("filterValue..", filterValue);
       this.setState({filterData: filterValue});
     } else {
-      this.setState({filterData: this.state.userProfileData});
+      this.setState({filterData: this.state.userMediaData});
     }
   }
 
