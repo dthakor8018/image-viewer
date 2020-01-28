@@ -12,8 +12,8 @@ import { red } from "@material-ui/core/colors";
 import Divider from "@material-ui/core/Divider";
 
 function getModalStyle() {
-  const top = 33;
-  const left = 40;
+  const top = 30;
+  const left = 33;
 
   return {
     top: `${top}%`,
@@ -24,27 +24,10 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
   paper: {
     position: "absolute",
-    width: "20%",
+    width: "33%",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
-  },
-  card: {
-    maxWidth: 345
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
   },
   avatar: {
     backgroundColor: red[500]
@@ -74,7 +57,6 @@ export default function ViewImageModal(props) {
         onBackdropClick={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Edit</h2>
 
           <Grid
             container
