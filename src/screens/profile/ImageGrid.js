@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from "@material-ui/core/Grid";
+import ViewImageModal from "./ViewImageModal";
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -14,11 +15,13 @@ const useStyles = makeStyles(theme => ({
 export default function ImageGrid(props) {
   const classes = useStyles();
   const [openImageView, setOpenImageView] = useState(false);
+    const [selectedImage, setImage] = useState(false);
 
 
     const viewImage = person => {
 console.log("open image",person);
         setOpenImageView(true);
+        setImage(person);
         console.log("openImageView",openImageView);
     };
 
@@ -36,6 +39,7 @@ console.log("open image",person);
       </Card>
 
           </Grid>))}
+          <ViewImageModal openImageView={openImageView} selectedImage={selectedImage}></ViewImageModal>
       </Grid>
   );
 }
