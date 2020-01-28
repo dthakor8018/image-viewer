@@ -12,7 +12,7 @@ import { red } from "@material-ui/core/colors";
 import Divider from "@material-ui/core/Divider";
 
 function getModalStyle() {
-  const top = 30;
+  const top = 33;
   const left = 33;
 
   return {
@@ -39,13 +39,26 @@ export default function ViewImageModal(props) {
   const { selectedImage, openImageView, handleClose } = props;
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
-  const [fullname, setFullname] = React.useState("");
+  const [comment, setComment] = React.useState("");
 
-  console.log("selectedImage...", selectedImage);
+  const [comments, setComments] = React.useState([]);
 
-  function fullnameChangeHandler(e) {
-    setFullname(e.target.value);
-    props.updateClickHandler(e.target.value);
+  function commentChangeHandler(e) {
+    setComment(e.target.value);
+    console.log("e.target.value",e.target.value);
+  }
+  function closeModal() {
+    handleClose();
+    setComments([]);
+  }
+
+  function updateComments() {
+    console.log("comment..",comment);
+    let updatedComments = [comment];
+
+    setComments(comments.concat(updatedComments));
+    console.log("comments..",comments);
+    setComment("");
   }
 
   return (
@@ -54,10 +67,9 @@ export default function ViewImageModal(props) {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={openImageView}
-        onBackdropClick={handleClose}
+        onBackdropClick={closeModal}
       >
         <div style={modalStyle} className={classes.paper}>
-
           <Grid
             container
             spacing={1}
@@ -116,15 +128,25 @@ export default function ViewImageModal(props) {
                     color="textSecondary"
                     component="p"
                   >
+
                     {selectedImage.tags.map(tag => {
                       return (
-                        <span size="small" color="primary">
+                        <span size="small" key={tag} color="primary">
                           #{tag}{" "}
                         </span>
                       );
                     })}
                   </Typography>
+<span>
 
+                  {comments.length > 0 && comments.map(tag => {
+                      return (
+                          <li size="small" key={tag} color="primary">
+                          {tag}
+                        </li>
+                      );
+                    })}
+</span>
                   <span>
                     <IconButton aria-label="add to favorites">
                       <FavoriteIcon />
@@ -137,8 +159,8 @@ export default function ViewImageModal(props) {
                       noValidate
                       autoComplete="off"
                     >
-                      <TextField id="standard-basic" label="Add a comment" />
-                      <Button variant="contained" color="primary">
+                      <TextField id="standard-basic" onChange={commentChangeHandler} value={comment} label="Add a comment" />
+                      <Button variant="contained" color="primary" onClick={updateComments} disabled={!comment}>
                         Add
                       </Button>
                     </form>
