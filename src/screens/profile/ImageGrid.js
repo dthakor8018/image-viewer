@@ -15,14 +15,16 @@ const useStyles = makeStyles(theme => ({
 export default function ImageGrid(props) {
   const classes = useStyles();
   const [openImageView, setOpenImageView] = useState(false);
-    const [selectedImage, setImage] = useState(false);
+    const [selectedImage, setImage] = useState('');
 
 
     const viewImage = person => {
-console.log("open image",person);
         setOpenImageView(true);
         setImage(person);
-        console.log("openImageView",openImageView);
+    };
+    const handleClose = ()  => {
+        setOpenImageView(false);
+        setImage('');
     };
 
     return (
@@ -39,7 +41,7 @@ console.log("open image",person);
       </Card>
 
           </Grid>))}
-          <ViewImageModal openImageView={openImageView} selectedImage={selectedImage}></ViewImageModal>
+          <ViewImageModal openImageView={openImageView} selectedImage={selectedImage} handleClose={handleClose}></ViewImageModal>
       </Grid>
   );
 }
