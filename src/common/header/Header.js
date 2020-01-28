@@ -53,19 +53,20 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="title" onClick={this.homeRedirect}>Image Viewer</div>
-                { this.props.showSearchBarAndProfileIcon === true ?
+
                 <div className="header-right">
-                    <div id="search-field">
-                        <div className="searchIcon" >
-                            <SearchIcon />
-                        </div>
-                        <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true} placeholder="Search..." />
-                    </div>
+                    {this.props.showSearchBar === true ?
+                        <div id="search-field">
+                            <div className="searchIcon" >
+                                <SearchIcon />
+                            </div>
+                            <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true} placeholder="Search..." />
+                        </div> : ""}
                     <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"  >
                         {this.state.userProfileData?<Avatar alt={this.state.userProfileData.full_name} id="profile-icon"  fontSize="small" onClick={this.profileRedirect} ariant="circle" src={this.state.userProfileData.profile_picture} />: null}
                     </IconButton>
-                </div> : ""
-                }
+                </div>
+
             </div>
 
         )

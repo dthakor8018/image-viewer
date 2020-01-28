@@ -32,11 +32,9 @@ class Profile extends Component {
     this.setState({editUserModal: true});
   };
    updateClickHandler = (fullname) => {
-    console.log("loginClickHandler..",fullname);
      this.setState({viewUpdateFullName: fullname});
   }
   submitClickHandler = () => {
-    console.log("fullname submit..",this.state.fullname);
     this.setState({editUserModal: false, fullname: this.state.viewUpdateFullName});
   }
   componentWillMount() {
@@ -49,12 +47,11 @@ class Profile extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-              console.log("result...",result);
               this.setState({userProfileData: result.data});
 
             },
             (error) => {
-              console.log("result...",error);
+                console.log("error...", error);
             }
         )
 
@@ -63,18 +60,16 @@ class Profile extends Component {
         .then(
             (result) => {
               this.setState({userMediaData: result.data});
-
-              console.log("result recent...",result);
             },
             (error) => {
-              console.log("result recent error...",error);
+                console.log("error...", error);
             }
         )
   }
   render() {
     return (
         <div>
-          <Header {...this.props} showSearchBarAndProfileIcon={false}  />
+            <Header {...this.props} showSearchBar={false}/>
           <Container maxWidth="xl">
             <div style={{height:'2rem'}}></div>
             <Grid container spacing={3} justify="left">

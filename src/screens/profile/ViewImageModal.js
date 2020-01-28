@@ -45,7 +45,6 @@ export default function ViewImageModal(props) {
 
   function commentChangeHandler(e) {
     setComment(e.target.value);
-    console.log("e.target.value",e.target.value);
   }
   function closeModal() {
     handleClose();
@@ -53,11 +52,8 @@ export default function ViewImageModal(props) {
   }
 
   function updateComments() {
-    console.log("comment..",comment);
     let updatedComments = [comment];
-
     setComments(comments.concat(updatedComments));
-    console.log("comments..",comments);
     setComment("");
   }
 
