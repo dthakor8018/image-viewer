@@ -72,7 +72,6 @@ export default function ImageCard(props) {
         if (comment) {
             data[index].comments = data[index].comments.concat([comment]);
         }
-
         setComment("");
     };
     const onLikeImage = index => {

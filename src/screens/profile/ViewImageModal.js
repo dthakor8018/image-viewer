@@ -6,10 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import TextField from "@material-ui/core/TextField";
 import { red } from "@material-ui/core/colors";
 import Divider from "@material-ui/core/Divider";
+import CardActions from "@material-ui/core/CardActions";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 function getModalStyle() {
   const top = 33;
@@ -40,6 +42,7 @@ export default function ViewImageModal(props) {
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [comment, setComment] = React.useState("");
+    const [like, setLike] = React.useState(false);
 
   const [comments, setComments] = React.useState([]);
 
@@ -49,6 +52,7 @@ export default function ViewImageModal(props) {
   function closeModal() {
     handleClose();
     setComments([]);
+      setLike(false);
   }
 
   function updateComments() {
@@ -56,6 +60,10 @@ export default function ViewImageModal(props) {
     setComments(comments.concat(updatedComments));
     setComment("");
   }
+
+    function onLikeImage() {
+        setLike(!like);
+    }
 
   return (
     <div>
@@ -146,12 +154,24 @@ export default function ViewImageModal(props) {
                             );
                         })}
                     </Typography>
-                  <span>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
+                    <CardActions disableSpacing>
+                        <IconButton
+                            aria-label="add to favorites"
+                            onClick={() => onLikeImage()}
+                        >
+                            {like ? (
+                                <FavoriteIcon style={{color: red[500]}}/>
+                            ) : (
+                                <FavoriteBorderIcon/>
+                            )}
                     </IconButton>
-                    <span> {selectedImage.likes.count} likes</span>
-                  </span>
+                        <span>
+                      {like
+                          ? selectedImage.likes.count + 1
+                          : selectedImage.likes.count}{" "}
+                            likes
+                    </span>
+                    </CardActions>
                   <div style={{ margin: "1rem" }}>
                     <form
                       className={classes.root}
