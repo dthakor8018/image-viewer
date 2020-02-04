@@ -13,6 +13,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Grid from "@material-ui/core/Grid";
 import "./ImageCard.css";
+import Moment from "react-moment";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -94,14 +95,14 @@ export default function ImageCard(props) {
               <Grid item xs={6} key={imageObj.id}>
                   <Card className={classes.card} variant="outlined">
                       <CardHeader
-                          avatar={
+                        avatar={
                               <Avatar
                                   alt={imageObj.user.full_name}
                                   src={imageObj.user.profile_picture}
                               />
                           }
-                          title={imageObj.user.username}
-                          subheader={changeToDate(imageObj.caption.created_time)}
+                        title={imageObj.user.username}
+                        subheader={<Moment format="DD/MM/YYYY HH:mm:ss" interval={imageObj.caption.created_time}/>}
                       />
                       <CardMedia
                           className={classes.media}

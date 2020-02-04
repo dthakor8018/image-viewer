@@ -39,11 +39,9 @@ const useStyles = makeStyles(theme => ({
 export default function ViewImageModal(props) {
   const classes = useStyles();
   const { selectedImage, openImageView, handleClose } = props;
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [comment, setComment] = React.useState("");
-    const [like, setLike] = React.useState(false);
-
+  const [like, setLike] = React.useState(false);
   const [comments, setComments] = React.useState([]);
 
   function commentChangeHandler(e) {
@@ -52,7 +50,7 @@ export default function ViewImageModal(props) {
   function closeModal() {
     handleClose();
     setComments([]);
-      setLike(false);
+    setLike(false);
   }
 
   function updateComments() {
@@ -61,9 +59,9 @@ export default function ViewImageModal(props) {
     setComment("");
   }
 
-    function onLikeImage() {
-        setLike(!like);
-    }
+  function onLikeImage() {
+    setLike(!like);
+  }
 
   return (
     <div>
@@ -140,56 +138,56 @@ export default function ViewImageModal(props) {
                       );
                     })}
                   </Typography>
-                    <Typography
-                        variant="body2"
-                        color="textSecondary"
-                        component="ui"
-                    >
-                        {comments.length > 0 &&
-                        comments.map(tag => {
-                            return (
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="ui"
+                  >
+                    {comments.length > 0 &&
+                    comments.map(tag => {
+                      return (
                           <li size="small" key={tag} color="primary">
-                              {tag}
+                            {tag}
                           </li>
-                            );
-                        })}
-                    </Typography>
-                    <CardActions disableSpacing>
-                        <IconButton
-                            aria-label="add to favorites"
-                            onClick={() => onLikeImage()}
-                        >
-                            {like ? (
-                                <FavoriteIcon style={{color: red[500]}}/>
-                            ) : (
-                                <FavoriteBorderIcon/>
-                            )}
+                      );
+                    })}
+                  </Typography>
+                  <CardActions disableSpacing>
+                    <IconButton
+                      aria-label="add to favorites"
+                      onClick={() => onLikeImage()}
+                    >
+                      {like ? (
+                        <FavoriteIcon style={{ color: red[500] }}/>
+                      ) : (
+                        <FavoriteBorderIcon/>
+                      )}
                     </IconButton>
-                        <span>
+                    <span>
                       {like
-                          ? selectedImage.likes.count + 1
-                          : selectedImage.likes.count}{" "}
-                            likes
+                        ? selectedImage.likes.count + 1
+                        : selectedImage.likes.count}{" "}
+                      likes
                     </span>
-                    </CardActions>
+                  </CardActions>
                   <div style={{ margin: "1rem" }}>
                     <form
                       className={classes.root}
                       noValidate
                       autoComplete="off"
                     >
-                        <TextField
-                            id="standard-basic"
-                            onChange={commentChangeHandler}
-                            value={comment}
-                            label="Add a comment"
-                        />
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={updateComments}
-                            disabled={!comment}
-                        >
+                      <TextField
+                        id="standard-basic"
+                        onChange={commentChangeHandler}
+                        value={comment}
+                        label="Add a comment"
+                      />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={updateComments}
+                        disabled={!comment}
+                      >
                         Add
                       </Button>
                     </form>
