@@ -40,11 +40,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function changeToDate(created_time) {
-  var date = new Date(parseInt(created_time));
-  return date.toDateString();
-}
-
 export default function ImageCard(props) {
   const classes = useStyles();
     const [comment, setComment] = React.useState("");

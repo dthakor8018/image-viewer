@@ -18,9 +18,9 @@ export default function ImageGrid(props) {
     const [selectedImage, setImage] = useState('');
 
 
-    const viewImage = person => {
+  const viewImage = imageObj => {
         setOpenImageView(true);
-        setImage(person);
+    setImage(imageObj);
     };
     const handleClose = ()  => {
         setOpenImageView(false);
@@ -30,13 +30,13 @@ export default function ImageGrid(props) {
     return (
       <Grid container spacing={1}  direction="row"
             alignItems="center">
-      {props.data&&props.data.map((person) => (
-          <Grid  justify="center" id="image-grids" item xs={4} key={person.id}  onClick={ () => viewImage(person)} >
+        {props.data && props.data.map((imageObj) => (
+          <Grid justify="center" id="image-grids" item xs={4} key={imageObj.id} onClick={() => viewImage(imageObj)}>
       <Card className={classes.card} variant="outlined" >
         <CardMedia
-            className={classes.media}
-            image={person.images.standard_resolution.url}
-            title="Image not loaded"
+          className={classes.media}
+          image={imageObj.images.standard_resolution.url}
+          title="Image not loaded"
         />
       </Card>
 
