@@ -1,11 +1,3 @@
-.dispNone {
-    display: none;
-}
-
-.dispBlock {
-    display: block;
-}
-
 .red {
     color: red;
 }
@@ -13,8 +5,7 @@
 .login-page-content {
     width: 100%;
     text-align: -webkit-center;
-    padding: 10px;
-    margin: 10px;
+    margin-top: 1rem;
 }
 
 .login-card {
@@ -24,6 +15,7 @@
     margin: 10px;
 }
 
-.login-card-form-username, .login-card-form-password {
+.login-card-form-username,
+.login-card-form-password {
     width: 300px;
 }
