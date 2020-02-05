@@ -42,7 +42,7 @@ export default function ImageGrid(props) {
             <CardMedia
               className={classes.media}
               image={imageObj.images.standard_resolution.url}
-              title="Image not loaded"
+              title={imageObj.images.standard_resolution.url}
             />
           </Card>
         </Grid>
