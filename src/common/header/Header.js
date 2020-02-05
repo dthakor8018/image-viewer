@@ -89,7 +89,7 @@ class Header extends Component {
               open={Boolean(this.state.anchorEl)}
               onClose={this.menuCloseHandler}
             >
-              <MenuItem onClick={this.profileRedirect}>My account</MenuItem>
+              <MenuItem onClick={this.profileRedirect}>My Account</MenuItem>
               <MenuItem onClick={this.logoutHandler}>Logout</MenuItem>
             </Menu>
           </IconButton>
