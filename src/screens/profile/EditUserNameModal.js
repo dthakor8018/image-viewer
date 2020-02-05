@@ -49,30 +49,30 @@ export default function EditUserNameModal(props) {
 
 
   return (
-      <div>
-        <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={props.editUserModal}
-            onClose={props.handleClose}
-            onBackdropClick={props.handleClose}
-        >
-          <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Edit</h2>
-            <FormControl id="fullName-form-control" required>
-              <InputLabel htmlFor="fullName">Full Name</InputLabel>
-              <Input id="fullName" type="text" onChange={fullNameChangeHandler}/>
-              {fullNameRequired ? <FormHelperText>
-                <span className="red">Full name required</span>
-              </FormHelperText>: null}
-            </FormControl>
-            <div style={{marginTop:'1rem'}}>
-              <Button variant="contained" color="primary" disabled={!fullName}
-                      onClick={props.submitClickHandler}>Update</Button>
-            </div>
+    <div>
+      <Modal
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        open={props.editUserModal}
+        onClose={props.handleClose}
+        onBackdropClick={props.handleClose}
+      >
+        <div style={modalStyle} className={classes.paper}>
+          <h2 id="simple-modal-title">Edit</h2>
+          <FormControl id="fullName-form-control" required>
+            <InputLabel htmlFor="fullName">Full Name</InputLabel>
+            <Input id="fullName" type="text" onChange={fullNameChangeHandler}/>
+            {fullNameRequired ? <FormHelperText>
+              <span className="red">Full name required</span>
+            </FormHelperText> : null}
+          </FormControl>
+          <div style={{ marginTop: "1rem" }}>
+            <Button variant="contained" color="primary" disabled={!fullName}
+                    onClick={props.submitClickHandler}>Update</Button>
           </div>
-        </Modal>
-      </div>
+        </div>
+      </Modal>
+    </div>
   );
 
 }

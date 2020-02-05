@@ -6,30 +6,30 @@ import IconButton from '@material-ui/core/IconButton';
 import Avatar from "@material-ui/core/Avatar";
 
 class Header extends Component {
-    constructor() {
-        super();
-        this.state = {
-            anchorEl: null,
-            searchValue: '',
-            userProfileData:null
-        }
+  constructor() {
+    super();
+    this.state = {
+      anchorEl: null,
+      searchValue: "",
+      userProfileData: null
+    };
 
-    }
+  }
 
   /* get User Profile data */
   getUserProfile() {
-        fetch(this.props.baseUrl + '?access_token=' + sessionStorage.getItem('access-token'))
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({ userProfileData: result.data });
+    fetch(this.props.baseUrl + "?access_token=" + sessionStorage.getItem("access-token"))
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({ userProfileData: result.data });
 
-            },
-            (error) => {
-              console.log("error...", error);
-            }
-          )
-    }
+        },
+        (error) => {
+          console.log("error...", error);
+        }
+      );
+  }
 
   /*check user is logged in or not*/
   componentWillMount() {
@@ -39,52 +39,54 @@ class Header extends Component {
     this.getUserProfile();
   }
 
-    menuOpenHandler = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
-    }
-    menuCloseHandler = () => {
-        this.setState({ anchorEl : null });
-    }
+  menuOpenHandler = (event) => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+  menuCloseHandler = () => {
+    this.setState({ anchorEl: null });
+  };
   /* remove the access token when user logout*/
-    logoutHandler = () => {
-        sessionStorage.removeItem("access-token");
-        this.menuCloseHandler();
-        this.props.history.push('/');
-    }
+  logoutHandler = () => {
+    sessionStorage.removeItem("access-token");
+    this.menuCloseHandler();
+    this.props.history.push("/");
+  };
 
   /*redirect to profile page*/
-    profileRedirect = () => {
-        this.props.history.push('/profile');
-    }
+  profileRedirect = () => {
+    this.props.history.push("/profile");
+  };
   /*redirect to home page*/
-    homeRedirect = () => {
-        this.props.history.push('/home');
-    }
-    render() {
-        return (
-            <div className="header">
-                <div className="title" onClick={this.homeRedirect}>Image Viewer</div>
+  homeRedirect = () => {
+    this.props.history.push("/home");
+  };
 
-                <div className="header-right">
-                    {this.props.showSearchBar === true ?
-                        <div id="search-field">
-                            <div className="searchIcon" >
-                                <SearchIcon />
-                            </div>
-                            <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true} placeholder="Search..." />
-                        </div> : ""}
-                    <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"
-                                onClick={this.profileRedirect}>
-                        {this.state.userProfileData ?
-                            <Avatar alt={this.state.userProfileData.full_name} id="profile-icon" fontSize="small"
-                                    ariant="circle" src={this.state.userProfileData.profile_picture}/> : null}
-                    </IconButton>
-                </div>
+  render() {
+    return (
+      <div className="header">
+        <div className="title" onClick={this.homeRedirect}>Image Viewer</div>
 
-            </div>
+        <div className="header-right">
+          {this.props.showSearchBar === true ?
+            <div id="search-field">
+              <div className="searchIcon">
+                <SearchIcon/>
+              </div>
+              <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true}
+                     placeholder="Search..."/>
+            </div> : ""}
+          <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"
+                      onClick={this.profileRedirect}>
+            {this.state.userProfileData ?
+              <Avatar alt={this.state.userProfileData.full_name} id="profile-icon" fontSize="small"
+                      ariant="circle" src={this.state.userProfileData.profile_picture}/> : null}
+          </IconButton>
+        </div>
 
-        )
-    }
+      </div>
+
+    );
+  }
 
 
 }

@@ -36,8 +36,8 @@ class Home extends Component {
   getMediaDetails() {
     fetch(
       this.props.baseUrl +
-        "media/recent/?access_token=" +
-        sessionStorage.getItem("access-token")
+      "media/recent/?access_token=" +
+      sessionStorage.getItem("access-token")
     )
       .then(res => res.json())
       .then(
