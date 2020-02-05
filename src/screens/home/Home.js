@@ -80,6 +80,7 @@ class Home extends Component {
   searchChangeHandler = event => {
     this.setState({ searchValue: event.target.value });
     if (event.target.value) {
+      // eslint-disable-next-line
       const filterValue = this.state.filterData.filter(data => {
         if (
           data.caption.text.split("#")[0].indexOf(this.state.searchValue) > -1
