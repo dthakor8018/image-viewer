@@ -54,7 +54,7 @@ class Home extends Component {
   }
 
   /*To check user is logged in or not*/
-  componentWillMount() {
+  componentDidMount() {
     if (this.state.loggedIn === false) {
       this.props.history.push("/");
     }

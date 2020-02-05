@@ -75,7 +75,7 @@ class Profile extends Component {
       );
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.state.loggedIn === false) {
       this.props.history.push("/");
     }
