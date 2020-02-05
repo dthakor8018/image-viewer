@@ -85,8 +85,6 @@ class Home extends Component {
           data.caption.text.split("#")[0].indexOf(this.state.searchValue) > -1
         ) {
           return data;
-        } else {
-          return [];
         }
       });
       this.setState({ filterData: filterValue });
