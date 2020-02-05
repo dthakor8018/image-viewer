@@ -113,7 +113,7 @@ export default function ImageCard(props) {
                           <Typography variant="body2" color="textSecondary" component="p">
                               {imageObj.tags.map(tag => {
                                   return (
-                                      <Button key={tag} size="small" color="primary">
+                                    <Button style={{ color: "#1976d2" }} key={tag} size="small" color="primary">
                                           #{tag}
                                       </Button>
                                   );
