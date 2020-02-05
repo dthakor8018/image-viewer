@@ -28,8 +28,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
 export default function EditUserNameModal(props) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -45,8 +43,6 @@ export default function EditUserNameModal(props) {
       setFullNameRequired(true);
     }
   }
-
-
 
   return (
     <div>
