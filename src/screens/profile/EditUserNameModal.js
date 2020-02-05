@@ -33,11 +33,17 @@ const useStyles = makeStyles(theme => ({
 export default function EditUserNameModal(props) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
-  const [fullname, setFullname] = React.useState('');
+  const [fullName, setFullname] = React.useState("");
+  const [fullNameRequired, setFullNameRequired] = React.useState(false);
 
   function fullNameChangeHandler(e) {
     setFullname(e.target.value);
     props.updateClickHandler(e.target.value);
+    if (e.target.value) {
+      setFullNameRequired(false);
+    } else {
+      setFullNameRequired(true);
+    }
   }
 
 
@@ -53,15 +59,16 @@ export default function EditUserNameModal(props) {
         >
           <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Edit</h2>
-            <FormControl id="fullname-formcontrol" required>
-              <InputLabel htmlFor="fullname">Full Name</InputLabel>
-              <Input id="fullname" type="text" fullname={fullname} onChange={fullNameChangeHandler}/>
-              {!fullname?<FormHelperText>
-                <span className="red">required</span>
+            <FormControl id="fullName-form-control" required>
+              <InputLabel htmlFor="fullName">Full Name</InputLabel>
+              <Input id="fullName" type="text" onChange={fullNameChangeHandler}/>
+              {fullNameRequired ? <FormHelperText>
+                <span className="red">Full name required</span>
               </FormHelperText>: null}
             </FormControl>
             <div style={{marginTop:'1rem'}}>
-            <Button variant="contained" color="primary" disabled={!fullname} onClick={props.submitClickHandler}>Update</Button>
+              <Button variant="contained" color="primary" disabled={!fullName}
+                      onClick={props.submitClickHandler}>Update</Button>
             </div>
           </div>
         </Modal>
