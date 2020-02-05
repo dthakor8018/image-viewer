@@ -146,10 +146,10 @@ export default function ViewImageModal(props) {
                     component="div"
                   >
                     {comments.length > 0 &&
-                    comments.map(tag => {
+                    comments.map(cmt => {
                       return (
                         <p style={{ fontSize: "16px" }} key={comment}>
-                            {tag}
+                          {selectedImage.user.username}: {cmt}
                         </p>
                       );
                     })}
