@@ -4,6 +4,8 @@ import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from "@material-ui/core/Avatar";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class Header extends Component {
   constructor() {
@@ -75,11 +77,21 @@ class Header extends Component {
               <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true}
                      placeholder="Search..."/>
             </div> : ""}
-          <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu"
-                      onClick={this.profileRedirect}>
+          <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu">
             {this.state.userProfileData ?
               <Avatar alt={this.state.userProfileData.full_name} id="profile-icon" fontSize="small"
-                      ariant="circle" src={this.state.userProfileData.profile_picture}/> : null}
+                      ariant="circle" src={this.state.userProfileData.profile_picture}
+                      onClick={this.menuOpenHandler}/> : null}
+            <Menu
+              id="simple-menu"
+              anchorEl={this.state.anchorEl}
+              keepMounted
+              open={Boolean(this.state.anchorEl)}
+              onClose={this.menuCloseHandler}
+            >
+              <MenuItem onClick={this.profileRedirect}>My account</MenuItem>
+              <MenuItem onClick={this.logoutHandler}>Logout</MenuItem>
+            </Menu>
           </IconButton>
         </div>
 
