@@ -72,6 +72,7 @@ export default function ImageCard(props) {
             data[index].comments = data[index].comments.concat([comment]);
         }
         setComment("");
+      document.getElementById("add-comment" + index).value = "";
     };
     const onLikeImage = index => {
         let l = data[index].liked;
@@ -129,7 +130,7 @@ export default function ImageCard(props) {
                               imageObj.comments.map(comment => {
                                   return (
                                     <p style={{ fontSize: "16px" }} key={comment}>
-                                      {imageObj.user.username}: {comment}
+                                      <b>{imageObj.user.username}:</b> {comment}
                                     </p>
                                   );
                               })}

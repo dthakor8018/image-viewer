@@ -148,8 +148,8 @@ export default function ViewImageModal(props) {
                     {comments.length > 0 &&
                     comments.map(cmt => {
                       return (
-                        <p style={{ fontSize: "16px" }} key={comment}>
-                          {selectedImage.user.username}: {cmt}
+                        <p style={{ fontSize: "16px", fontWeight: "bold" }} key={comment}>
+                          <b>{selectedImage.user.username}:</b> {cmt}
                         </p>
                       );
                     })}
