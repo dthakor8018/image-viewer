@@ -55,9 +55,12 @@ export default function ViewImageModal(props) {
 
   /*add comment for the selected image*/
   function updateComments() {
-    let updatedComments = [comment];
-    setComments(comments.concat(updatedComments));
-    setComment("");
+    if (comment) {
+      let updatedComments = [comment];
+      const updateLatestComment = comments.concat(updatedComments);
+      setComments(updateLatestComment);
+      setComment("");
+    }
   }
 
   function onLikeImage() {
@@ -134,7 +137,12 @@ export default function ViewImageModal(props) {
                   >
                     {selectedImage.tags.map(tag => {
                       return (
-                        <span style={{ color: "#1976d2", fontSize: "14px" }} size="small" key={tag} color="primary">
+                        <span
+                          style={{ color: "#1976d2", fontSize: "14px" }}
+                          size="small"
+                          key={tag}
+                          color="primary"
+                        >
                           #{tag}{" "}
                         </span>
                       );
@@ -148,7 +156,10 @@ export default function ViewImageModal(props) {
                     {comments.length > 0 &&
                     comments.map(cmt => {
                       return (
-                        <p style={{ fontSize: "16px", fontWeight: "bold" }} key={comment}>
+                        <p
+                          style={{ fontSize: "16px", fontWeight: "bold" }}
+                          key={cmt}
+                        >
                           <b>{selectedImage.user.username}:</b> {cmt}
                         </p>
                       );
@@ -179,16 +190,16 @@ export default function ViewImageModal(props) {
                       autoComplete="off"
                     >
                       <TextField
-                        id="standard-basic"
-                        onChange={commentChangeHandler}
+                        id="add-user-comment"
                         value={comment}
+                        onChange={commentChangeHandler}
                         label="Add a comment"
                       />
                       <Button
                         variant="contained"
                         color="primary"
-                        onClick={updateComments}
                         disabled={!comment}
+                        onClick={updateComments}
                       >
                         Add
                       </Button>
