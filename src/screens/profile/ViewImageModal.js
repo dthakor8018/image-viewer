@@ -134,7 +134,7 @@ export default function ViewImageModal(props) {
                   >
                     {selectedImage.tags.map(tag => {
                       return (
-                        <span style={{ color: "#1976d2" }} size="small" key={tag} color="primary">
+                        <span style={{ color: "#1976d2", fontSize: "14px" }} size="small" key={tag} color="primary">
                           #{tag}{" "}
                         </span>
                       );
