@@ -31,7 +31,6 @@ export default function ImageGrid(props) {
       {props.data &&
       props.data.map(imageObj => (
         <Grid
-          justify="center"
           id="image-grids"
           item
           xs={4}

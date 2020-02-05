@@ -122,7 +122,7 @@ export default function ViewImageModal(props) {
                       </Typography>
                     </Grid>
                   </Grid>
-                  <Divider variant="left" />
+                  <Divider variant="fullWidth"/>
                   <Typography
                     variant="body2"
                     color="textSecondary"

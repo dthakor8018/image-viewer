@@ -163,7 +163,7 @@ export default function ImageCard(props) {
                 />
                 <Button
                   variant="contained"
-                  id="add-comments-button"
+                  id={"add-comments-button" + index}
                   color="primary"
                   onClick={() => updateComment(index)}
                 >
