@@ -32,11 +32,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function EditUserNameModal(props) {
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [fullname, setFullname] = React.useState('');
 
-  function fullnameChangeHandler(e) {
+  function fullNameChangeHandler(e) {
     setFullname(e.target.value);
     props.updateClickHandler(e.target.value);
   }
@@ -56,7 +55,7 @@ export default function EditUserNameModal(props) {
             <h2 id="simple-modal-title">Edit</h2>
             <FormControl id="fullname-formcontrol" required>
               <InputLabel htmlFor="fullname">Full Name</InputLabel>
-              <Input id="fullname" type="text" fullname={fullname} onChange={fullnameChangeHandler} />
+              <Input id="fullname" type="text" fullname={fullname} onChange={fullNameChangeHandler}/>
               {!fullname?<FormHelperText>
                 <span className="red">required</span>
               </FormHelperText>: null}

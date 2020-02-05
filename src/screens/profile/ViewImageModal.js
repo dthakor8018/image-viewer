@@ -53,6 +53,7 @@ export default function ViewImageModal(props) {
     setLike(false);
   }
 
+  /*add comment for the selected image*/
   function updateComments() {
     let updatedComments = [comment];
     setComments(comments.concat(updatedComments));
@@ -83,6 +84,7 @@ export default function ViewImageModal(props) {
               {selectedImage ? (
                 <img
                   src={selectedImage.images.standard_resolution.url}
+                  alt={selectedImage.images.standard_resolution.url}
                   style={{
                     height: "100%",
                     maxWidth: "100%",

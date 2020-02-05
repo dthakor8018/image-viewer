@@ -15,37 +15,48 @@ class Header extends Component {
         }
 
     }
-    componentWillMount() {
-        if (this.state.loggedIn === false) {
-            this.props.history.push('/');
-        }
 
+  /* get User Profile data */
+  getUserProfile() {
         fetch(this.props.baseUrl + '?access_token=' + sessionStorage.getItem('access-token'))
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({userProfileData: result.data});
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({ userProfileData: result.data });
 
-                },
-                (error) => {
-                    console.log("error...",error);
-                }
-            )
+            },
+            (error) => {
+              console.log("error...", error);
+            }
+          )
     }
+
+  /*check user is logged in or not*/
+  componentWillMount() {
+    if (this.state.loggedIn === false) {
+      this.props.history.push("/");
+    }
+    this.getUserProfile();
+  }
+
     menuOpenHandler = (event) => {
         this.setState({ anchorEl: event.currentTarget });
     }
     menuCloseHandler = () => {
         this.setState({ anchorEl : null });
     }
+  /* remove the access token when user logout*/
     logoutHandler = () => {
         sessionStorage.removeItem("access-token");
         this.menuCloseHandler();
         this.props.history.push('/');
     }
+
+  /*redirect to profile page*/
     profileRedirect = () => {
         this.props.history.push('/profile');
     }
+  /*redirect to home page*/
     homeRedirect = () => {
         this.props.history.push('/home');
     }

@@ -45,6 +45,8 @@ export default function ImageCard(props) {
     const [comment, setComment] = React.useState("");
     const [render, setRender] = React.useState(false);
     let {data} = props;
+
+  /* add comments and liked property for each data object*/
     useEffect(() => {
         data &&
         data.map(image => {
@@ -60,6 +62,7 @@ export default function ImageCard(props) {
         });
     }, [data]);
 
+  // called whenever comment get change
     function commentChangeHandler(e) {
         setComment(e.target.value);
     }
@@ -71,7 +74,6 @@ export default function ImageCard(props) {
         setComment("");
     };
     const onLikeImage = index => {
-        console.log("inside", index);
         let l = data[index].liked;
         data[index].liked = !l;
         setRender(!render);
