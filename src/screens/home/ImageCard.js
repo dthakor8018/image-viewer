@@ -113,25 +113,24 @@ export default function ImageCard(props) {
                           <Typography variant="body2" color="textSecondary" component="p">
                               {imageObj.tags.map(tag => {
                                   return (
-                                    <span style={{ color: "#1976d2", fontSize: "14px" }} size="small" key={tag}
-                                          color="primary">
+                                    <span style={{ color: "#1976d2", fontSize: "14px" }} size="small" key={tag}>
                           #{tag}{" "}
                         </span>
                                   );
                               })}
                           </Typography>
                           <Typography
-                              variant="body2"
-                              color="textSecondary"
-                              component="ul"
+                            variant="body2"
+                            color="textSecondary"
+                            component="div"
                           >
                               {imageObj.comments &&
                               imageObj.comments.length > 0 &&
-                              imageObj.comments.map(tag => {
+                              imageObj.comments.map(comment => {
                                   return (
-                        <li size="small" key={tag} color="primary">
-                            {tag}
-                        </li>
+                                    <p style={{ fontSize: "16px" }} key={comment}>
+                                      {imageObj.user.username}: {comment}
+                                    </p>
                                   );
                               })}
                           </Typography>

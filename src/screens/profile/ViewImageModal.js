@@ -143,14 +143,14 @@ export default function ViewImageModal(props) {
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="ui"
+                    component="div"
                   >
                     {comments.length > 0 &&
                     comments.map(tag => {
                       return (
-                          <li size="small" key={tag} color="primary">
+                        <p style={{ fontSize: "16px" }} key={comment}>
                             {tag}
-                          </li>
+                        </p>
                       );
                     })}
                   </Typography>
